@@ -10,6 +10,6 @@ var userSchema = new Schema({
     posts: [{type: Schema.Types.ObjectId, ref: 'Post'}]
 });
 
-schema.plugin(mongooseUniqueValidator);
+userSchema.plugin(mongooseUniqueValidator);
 
 module.exports = mongoose.model('User', userSchema);

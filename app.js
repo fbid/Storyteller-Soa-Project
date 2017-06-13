@@ -7,11 +7,13 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
 var appRoutes = require('./routes/app');
+var postRoutes = require('./routes/posts');
+var authRoutes = require('./routes/auth');
 
 var app = express();
 
 mongoose.connect('mongodb://localhost:27017/soa-progetto');
-moongoose.Promise = global.Promise;
+mongoose.Promise = global.Promise;
 mongoose.set('debug', true);
 
 // view engine setup
@@ -27,6 +29,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
+app.use('/stories', postRoutes);
+app.use('/auth', authRoutes);
 app.use('/', appRoutes);
 
 // catch 404 and forward to error handler
