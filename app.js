@@ -13,7 +13,6 @@ var authRoutes = require('./routes/auth');
 var app = express();
 
 mongoose.connect('mongodb://localhost:27017/soa-progetto');
-mongoose.Promise = global.Promise;
 mongoose.set('debug', true);
 
 // view engine setup

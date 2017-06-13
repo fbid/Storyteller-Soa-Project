@@ -4,11 +4,22 @@ var router = express.Router();
 var Post = require('../models/post');
 
 router.post('/', function (req, res, next) {
+
   Post.create(req.body)
-    .then( post => {
-      res.send(post);
+    .then(function(post) {
+      res.status(201).json({
+        msg: 'Post correctly stored.',
+        data: post
+      });
     })
-    .catch(next);
+    .catch(function(err){
+      res.status(404).json({
+        msg: 'An error occured.',
+        error: err
+      })
+      next();
+    });
+
 });
 
 module.exports = router;
