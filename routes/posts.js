@@ -17,7 +17,7 @@ router.post('/', function (req, res, next) {
         msg: 'An error occured.',
         error: err
       })
-      next();
+      next(err);
     });
 
 });
