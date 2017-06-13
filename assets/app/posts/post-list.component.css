@@ -1,0 +1,12 @@
+li {
+  border-top: 0.15em solid #8D4DF4;
+  padding: 3rem;
+  list-style-type: none;
+  box-shadow: 4px 10px 19px rgba(0,0,0,.15);
+  margin-top: 2.5em;
+}
+
+li.columns:nth-of-type(2n-1) {
+    clear: both;
+    margin-left: 0;
+}

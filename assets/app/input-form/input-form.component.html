@@ -1,0 +1,27 @@
+<div class="row-spacer"></div>
+<h3>Submit your story!</h3>
+<form [formGroup]='addNewForm' (ngSubmit)='onSubmit()'>
+  <div class="row">
+    <div class="four columns">
+      <label for="author">Author</label>
+      <input class="u-full-width" type="text" formControlName='author'>
+    </div>
+    <div class="row">
+      <div class="twelve columns">
+        <label for="content">Content</label>
+        <input class="u-full-width" type="text" formControlName='content'>
+      </div>
+    </div>
+    <div class="row">
+      <div class="eight columns">
+        <label for="tags">Tags</label>
+        <input class="u-full-width" type="text" formControlName='tags'>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <button type="submit" class="button-primary" [disabled]='!addNewForm.valid'>
+      Submit
+    </button>
+  </div>
+</form>
