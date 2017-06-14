@@ -9,17 +9,17 @@
           Stories
         </a>
       </li>
-      <li class="navbar-item">
+      <li class="navbar-item" *ngIf='!isLoggedIn()'>
         <a class="navbar-link" routerLink='signin' routerLinkActive='active' >
           Sign In
         </a>
       </li>
-      <li class="navbar-item">
+      <li class="navbar-item" *ngIf='!isLoggedIn()'>
         <a class="navbar-link" routerLink='signup' routerLinkActive='active' >
           Sign Up
         </a>
       </li>
-      <li class="navbar-item">
+      <li class="navbar-item" *ngIf='isLoggedIn()'>
         <app-logout></app-logout>
       </li>
     </ul>
