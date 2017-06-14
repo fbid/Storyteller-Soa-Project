@@ -33,7 +33,6 @@ li.navbar-item::after {
   height: 6.5rem;
   background: #fff;
   z-index: 99;
-  border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
 }
 .navbar-spacer {
