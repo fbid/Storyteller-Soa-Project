@@ -1,5 +1,6 @@
 import { Component} from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms'
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { Post } from '../shared/models/post.model';
 import { PostService } from '../shared/services/post.service';
@@ -13,7 +14,7 @@ export class InputFormComponent {
 
   addNewForm: FormGroup; //Form instance
 
-  constructor( private postService: PostService, fb: FormBuilder ) {
+  constructor( private postService: PostService, fb: FormBuilder, private router: Router ) {
     //Form building
     this.addNewForm = fb.group({
       'title': [null, Validators.compose([Validators.required,Validators.maxLength(25)])],
@@ -38,7 +39,10 @@ export class InputFormComponent {
 
     this.postService.addPost(newPost)
       .subscribe(
-        data => console.log(data),
+        data => {
+          console.log(data)
+          this.router.navigate(['/stories'])
+        },
         err => console.error(err)
       );
 

@@ -12,6 +12,7 @@ import { HeaderComponent } from './shared/layout/header.component';
 import { SignInComponent } from './auth/signin.component';
 import { SignUpComponent } from './auth/signup.component';
 import { routing } from './app.routing';
+import { AuthService } from './shared/services/auth.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { routing } from './app.routing';
     HttpModule,
     routing
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
