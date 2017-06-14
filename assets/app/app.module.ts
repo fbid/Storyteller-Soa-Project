@@ -11,6 +11,7 @@ import { PostsComponent } from './posts/posts.component';
 import { HeaderComponent } from './shared/layout/header.component';
 import { SignInComponent } from './auth/signin.component';
 import { SignUpComponent } from './auth/signup.component';
+import { LogoutComponent } from './auth/logout.component';
 import { routing } from './app.routing';
 import { AuthService } from './shared/services/auth.service';
 
@@ -23,7 +24,8 @@ import { AuthService } from './shared/services/auth.service';
     PostsComponent,
     HeaderComponent,
     SignInComponent,
-    SignUpComponent
+    SignUpComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
