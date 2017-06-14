@@ -11,7 +11,9 @@ import { PostsComponent } from './posts/posts.component';
 import { HeaderComponent } from './shared/layout/header.component';
 import { SignInComponent } from './auth/signin.component';
 import { SignUpComponent } from './auth/signup.component';
+import { LogoutComponent } from './auth/logout.component';
 import { routing } from './app.routing';
+import { AuthService } from './shared/services/auth.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { routing } from './app.routing';
     PostsComponent,
     HeaderComponent,
     SignInComponent,
-    SignUpComponent
+    SignUpComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,7 @@ import { routing } from './app.routing';
     HttpModule,
     routing
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

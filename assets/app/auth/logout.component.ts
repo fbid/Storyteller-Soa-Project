@@ -1,10 +1,25 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { AuthService } from '../shared/services/auth.service';
 
 @Component({
   selector: 'app-logout',
   template: `
-    <button class="logout-btn" (click)="logout()">Logout</button>
+    <a class="navbar-link" (click)='logout()'>
+      Logout
+    </a>
   `,
-  styles: ['.logout-btn{ background:red; color:#fff}']
+  styleUrls: ['./logout.component.css']
 })
-export class LogoutComponent { }
+export class LogoutComponent {
+
+  constructor(private authService: AuthService, private router: Router) { }
+
+  logout() {
+    console.log('Logging out user...');
+    this.authService.userLogout();
+    this.router.navigateByUrl('/');
+  }
+
+}

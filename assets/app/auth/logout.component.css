@@ -1,0 +1,13 @@
+.navbar-link {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .2rem;
+  margin-right: 35px;
+  text-decoration: none;
+  line-height: 6.5rem;
+  color: #222;
+  cursor:pointer;
+}
+.navbar-link.active {
+  color: #8D4DF4;
+}

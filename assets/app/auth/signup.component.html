@@ -1,6 +1,7 @@
 <div class="row-spacer"></div>
 <h3>Sign Up!</h3>
 <form [formGroup]='signUpForm' (ngSubmit)='onSubmit()'>
+
   <div class="row">
     <div class="four columns">
       <label for="username">Username</label>
@@ -10,14 +11,45 @@
       <label for="email">Email</label>
       <input class="u-full-width" type="text" formControlName='email'>
     </div>
+  </div>
+
+  <div class="row">
     <div class="four columns">
       <label for="password">Password</label>
-      <input class="u-full-width" type="text" formControlName='password'>
+      <input class="u-full-width" type="password" formControlName='password'>
+    </div>
+    <div class="four columns">
+      <label for="rep-password">Repeat Password</label>
+      <input class="u-full-width" type="password" formControlName='rep-password'>
     </div>
   </div>
+
+  <div class="row">
+    <div class="four columns">
+      <label for="firstName">firstName</label>
+      <input class="u-full-width" type="text" formControlName='firstName'>
+    </div>
+    <div class="four columns">
+      <label for="lastName">lastName</label>
+      <input class="u-full-width" type="text" formControlName='lastName'>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="four columns">
+      <label for="city">City</label>
+      <input class="u-full-width" type="text" formControlName='city'>
+    </div>
+    <div class="four columns">
+      <label for="country">Country</label>
+      <input class="u-full-width" type="text" formControlName='country'>
+    </div>
+  </div>
+
   <div class="row">
     <button type="submit" class="button-primary" [disabled]='!signUpForm.valid'>
       Submit
     </button>
   </div>
+
 </form>
