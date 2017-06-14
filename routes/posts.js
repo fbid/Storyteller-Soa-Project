@@ -19,7 +19,6 @@ router.get('/', function (req, res, next) {
 });
 
 router.post('/', function (req, res, next) {
-
   Post.create(req.body)
     .then(function(post) {
       return res.status(201).json({

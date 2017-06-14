@@ -17,12 +17,14 @@ export class PostService {
       .map((response: Response) => {
         const postArray = response.json();
         let processedPosts : Post[] = [];
-
+        console.log(postArray);
         for (let post of postArray) {
           processedPosts.push( new Post (
             post._id,
-            'userId', /* mockup id */
+            post.userId,
             post.author,
+            post.title,
+            post.mainImg,
             post.content,
             post.date,
             post.tags
@@ -38,7 +40,6 @@ export class PostService {
   addPost(post: Post) {
     const headers = new Headers({'Content-Type': 'application/json'});
     const reqBody = JSON.stringify(post);
-
     return this.http.post('/stories', reqBody, {headers: headers})
       .map((response: Response) => response.json())
       .catch((error: Response) => Observable.throw(error.json));

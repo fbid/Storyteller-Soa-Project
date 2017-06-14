@@ -5,3 +5,14 @@ h4 {
 h5 {
   font-size:1.6rem;
 }
+
+.main-img{
+  min-height:230px;
+  width:100%;
+  background-size:cover !important;
+  background-position:center !important;
+}
+
+.story-details {
+  padding:3em;
+}

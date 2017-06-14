@@ -3,9 +3,11 @@ export class Post {
     public id: string,
     public userId: string,
     public author: string,
+    public title: string,
+    public mainImg: string,
     public content: string,
     public date: Date,
-    public tags: string[],
-    public main_img?: string,
+    public tags: string
+
   ) {}
 }

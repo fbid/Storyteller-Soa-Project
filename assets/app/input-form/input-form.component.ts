@@ -16,7 +16,8 @@ export class InputFormComponent {
   constructor( private postService: PostService, fb: FormBuilder ) {
     //Form building
     this.addNewForm = fb.group({
-      'author': [null, Validators.compose([Validators.required,Validators.maxLength(25)])],
+      'title': [null, Validators.compose([Validators.required,Validators.maxLength(25)])],
+      'mainImg': [null, Validators.required],
       'content': [null, Validators.required],
       'tags': [null, Validators.required]
     })
@@ -24,7 +25,16 @@ export class InputFormComponent {
 
   onSubmit(){
     let form = this.addNewForm.value; //Extracting the values from FromGrup obj
-    let newPost = new Post(null, null, form.content, form.author, new Date(), form.tags);
+    let newPost = new Post(
+      null,
+      'abc1234UserID',
+      'author',
+      form.title,
+      form.mainImg,
+      form.content,
+      new Date(),
+      form.tags
+    );
 
     this.postService.addPost(newPost)
       .subscribe(
