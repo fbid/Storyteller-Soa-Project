@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+
+import { AuthService } from '../shared/services/auth.service';
+//import { User } from '../shared/models/user.model';
+
 
 @Component({
   selector:'app-signin',
@@ -9,7 +14,7 @@ export class SignInComponent {
 
   private signInForm: FormGroup;
 
-  constructor( fb:FormBuilder ){
+  constructor( fb:FormBuilder, private router: Router, private authService: AuthService ){
     this.signInForm = fb.group({
       'email': [null, Validators.required],
       'password': [null, Validators.required]
@@ -18,7 +23,19 @@ export class SignInComponent {
 
   onSubmit(){
     console.log(this.signInForm);
-    this.signInForm.reset();
+    const form = this.signInForm.value;
+    this.authService.signInUser({ email: form.email, password: form.password })
+      .subscribe(
+        data => {
+          localStorage.setItem('userId', data.userId);
+          localStorage.setItem('token', data.token);
+        },
+        error => console.error(error)
+      );
+
+    //this.signInForm.reset();
+    this.router.navigateByUrl('/');
+
   }
 
 

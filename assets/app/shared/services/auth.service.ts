@@ -10,6 +10,14 @@ export class AuthService {
 
   constructor( private http: Http) { }
 
+  signInUser(user) {
+    let body = JSON.stringify(user);
+    let headers = new Headers({'Content-Type':'application/json'});
+    return this.http.post('/auth/signin', body, {headers: headers})
+      .map((response: Response) => response.json())
+      .catch((error: Response) => Observable.throw(error.json));
+  }
+
   signUpUser(user) {
     let body = JSON.stringify(user);
     let headers = new Headers({'Content-Type':'application/json'});
