@@ -142,7 +142,7 @@ input[type="button"] {
   color: #555;
   text-align: center;
   font-size: 11px;
-  font-weight: 600;
+  font-family: 'Raleway', 'Helvetica',sans-serif;
   line-height: 38px;
   letter-spacing: .1rem;
   text-transform: uppercase;
@@ -346,20 +346,16 @@ hr {
 @media (min-width: 1200px) {}
 
 
+/* CUSTOM */
 .row-spacer {
   height:3.5em;
 }
 
-/* TYPOGRAPHY */
 h3 {
     font-family: 'PT Serif', sans-serif;
     font-weight: 700;
     font-size: 3em;
     line-height: 160%;
-}
-
-button {
-  font-family: 'Raleway', sans-serif;
 }
 
 li.navbar-item:last-of-type::after {
