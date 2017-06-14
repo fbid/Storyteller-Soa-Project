@@ -5,7 +5,7 @@ var Post = require('../models/post');
 
 router.get('/', function (req, res, next) {
 
-  Post.find({})
+  Post.find()
     .then(function(posts) {
       return res.status(200).json(posts);
     })
@@ -35,5 +35,33 @@ router.post('/', function (req, res, next) {
     });
 
 });
+
+router.put('/:id', function (req, res, next) {
+
+  Post.findById(req.params.id)
+    .catch(function(err){
+      res.status(500).json({
+        msg: 'An error occured.',
+        error: err
+      })
+    })
+    .then(function(post){
+      message.content = req.body.content;
+      message.save()
+        .then(function(post) {
+          return res.status(200).json({
+            msg: 'Post updated correctly.',
+            data: post
+          });
+        })
+        .catch(function(err){
+          res.status(500).json({
+            msg: 'An error occured.',
+            error: err
+          })
+        });
+    })
+
+})
 
 module.exports = router;

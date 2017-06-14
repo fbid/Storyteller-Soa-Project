@@ -24,7 +24,7 @@ export class InputFormComponent {
 
   onSubmit(){
     let form = this.addNewForm.value; //Extracting the values from FromGrup obj
-    let newPost = new Post(form.content, form.author, new Date(), form.tags.split(','));
+    let newPost = new Post(null, null, form.content, form.author, new Date(), form.tags);
 
     this.postService.addPost(newPost)
       .subscribe(

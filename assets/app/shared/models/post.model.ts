@@ -1,9 +1,11 @@
 export class Post {
   constructor(
-    public content: string,
+    public id: string,
+    public userId: string,
     public author: string,
+    public content: string,
     public date: Date,
     public tags: string[],
-    public main_img?: string
+    public main_img?: string,
   ) {}
 }

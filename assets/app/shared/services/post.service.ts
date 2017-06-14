@@ -12,8 +12,30 @@ export class PostService {
 
   constructor( private http: Http) { }
 
+  getPosts() {
+    return this.http.get('/stories')
+      .map((response: Response) => {
+        const postArray = response.json();
+        let processedPosts : Post[] = [];
+
+        for (let post of postArray) {
+          processedPosts.push( new Post (
+            post._id,
+            'userId', /* mockup id */
+            post.author,
+            post.content,
+            post.date,
+            post.tags
+          ));
+        }
+
+        this.posts = processedPosts;
+        return processedPosts;
+      })
+      .catch((error: Response) => Observable.throw(error.json));
+  }
+
   addPost(post: Post) {
-    //Indispensabile altrimenti invia come tipo text/plain
     const headers = new Headers({'Content-Type': 'application/json'});
     const reqBody = JSON.stringify(post);
 
@@ -22,8 +44,11 @@ export class PostService {
       .catch((error: Response) => Observable.throw(error.json));
   }
 
-  getPosts() {
-    return this.http.get('/stories')
+  editPost(post: Post) {
+    const headers = new Headers({'Content-Type': 'application/json'});
+    const reqBody = JSON.stringify(post);
+
+    return this.http.put('/stories/' + post.id, reqBody, {headers: headers})
       .map((response: Response) => response.json())
       .catch((error: Response) => Observable.throw(error.json));
   }

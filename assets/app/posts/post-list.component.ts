@@ -23,6 +23,7 @@ export class PostListComponent implements OnInit{
     this.postService.getPosts()
       .subscribe( (posts: Post[]) => {
         this.posts = posts;
+        console.log(this.posts);
       });
   }
 
