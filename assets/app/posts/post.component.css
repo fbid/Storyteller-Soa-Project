@@ -1,13 +1,14 @@
-h4 {
-  font-size:2.4rem;
+h3 {
+  font-size:2.4em;
 }
 
 h5 {
-  font-size:1.6rem;
+  font-size:.9em;
+  color:#999;
 }
 
 .main-img{
-  min-height:230px;
+  min-height:270px;
   width:100%;
   background-size:cover !important;
   background-position:center !important;
@@ -15,4 +16,13 @@ h5 {
 
 .story-details {
   padding:3em;
+}
+
+p.content {
+  height:100px;
+  overflow:hidden;
+}
+
+.tags {
+
 }

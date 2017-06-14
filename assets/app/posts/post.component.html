@@ -3,7 +3,7 @@
 </div>
 <div class="story-details">
   <h3>{{postData.title}}</h3>
-  <p>{{postData.content}}</p>
-  <h5>Posted by {{postData.author}} on {{postData.date | date: 'dd/MM/yyyy'}} </h5>
-  <h6>{{postData.tags}}</h6>
+  <h5 class="author-date">Posted by {{postData.author}} on {{postData.date | date: 'dd/MM/yyyy'}}</h5>
+  <p class="content">{{postData.content}}</p>
+  <h6 class="tags">{{postData.tags}}</h6>
 </div>
