@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var helmet = require('helmet');
 
 var appRoutes = require('./routes/app');
 var postRoutes = require('./routes/posts');
@@ -27,6 +28,8 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//Helmet middleware for XSS protection, and more.
+app.use(helmet());
 
 app.use('/stories', postRoutes);
 app.use('/auth', authRoutes);
