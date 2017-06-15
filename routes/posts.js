@@ -53,7 +53,7 @@ router.post('/', function (req, res, next) {
       //Replace user related info
       req.body.userId = user._id;
       req.body.author = user.username;
-      console.log('reqbody', req.body);
+
       //Submit the story
       Post.create(req.body)
         .then(function(post) {
@@ -70,6 +70,7 @@ router.post('/', function (req, res, next) {
         });
     })
     .catch(function(err){
+
       res.status(500).json({
         msg: 'An error occured.',
         error: err
@@ -131,7 +132,6 @@ router.delete('/:id', function(req, res, next) {
             })
           })
           .catch(function(err){
-            console.log('Post non trovato');
             res.status(500).json({
               msg: 'An error occured.',
               error: err

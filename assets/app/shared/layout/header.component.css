@@ -19,9 +19,10 @@ li.navbar-item::after {
   font-size:1.5em;
 }
 
-.logo > span {
+.logo > a {
   display:table-cell;
   vertical-align:middle;
+  text-decoration:none;
 }
 
 .navbar, .navbar-spacer {

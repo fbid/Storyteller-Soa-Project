@@ -1,5 +1,5 @@
 h3 {
-  font-size:2.4em;
+  font-size:2.1em;
 }
 
 h5 {
@@ -31,6 +31,7 @@ h5 {
 p.content {
   height:100px;
   overflow:hidden;
+  margin-bottom: 5em;
 }
 
 ul.tags {
@@ -40,12 +41,23 @@ ul.tags {
 
 ul.tags > li {
   display:inline;
-  margin-right:30px;
+  margin-right:10px;
 }
 
 ul.tags > li > a.tag-link {
   text-transform:capitalize;
   letter-spacing: .05em;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid #d7d7d7;
+  color:#999;
+  text-decoration: none;
+  transition: color .5s ease, border-color .5s ease;
+}
+
+ul.tags > li > a.tag-link:hover{
+    color:#8D4DF4;
+    border-color:#8D4DF4;
 }
 
 span.ionicon {
