@@ -6,9 +6,16 @@
   <h5 class="author-date">Posted by <a href="#">{{postData.author}}</a> on {{postData.date | date: 'dd/MM/yyyy'}}</h5>
   <p class="content">{{postData.content}}</p>
   <hr>
-  <ul class="tags">
-    <li *ngFor="let tag of postData.tags" class="tag">
-      <a href="#" class="tag-link">#{{tag}}</a>
-    </li>
-  </ul>
+  <div class="row">
+    <ul class="tags eight columns">
+      <li *ngFor="let tag of postData.tags" class="tag">
+        <a href="#" class="tag-link">#{{tag}}</a>
+      </li>
+    </ul>
+    <div class="four columns">
+      <span class="ionicon ion-ios-trash-outline" (click)=onDelete(postData)></span>
+      <span class="ionicon ion-ios-compose-outline" (click)="onEdit(postData)"></span>
+    </div>
+  </div>
+
 </div>

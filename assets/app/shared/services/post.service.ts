@@ -48,15 +48,25 @@ export class PostService {
   }
 
   editPost(post: Post) {
-    const headers = new Headers({'Content-Type': 'application/json'});
+    const token = localStorage.getItem('token');
+    const headers = new Headers({'Content-Type': 'application/json', 'x-access-token': token});
     const reqBody = JSON.stringify(post);
 
-    return this.http.patch('/stories/' + post.id, reqBody, {headers: headers})
+    return this.http.patch('/stories/'+post.id, reqBody, {headers: headers})
       .map((response: Response) => response.json())
       .catch((error: Response) => Observable.throw(error.json));
   }
 
   deletePost(post: Post) {
-    this.posts.splice(this.posts.indexOf(post), 1);
+    const token = localStorage.getItem('token');
+    const headers = new Headers({'Content-Type': 'application/json', 'x-access-token': token});
+
+    return this.http.delete('/stories/'+post.id, {headers: headers})
+      .map((response: Response) => {
+        //Remove the post from posts local array. Otherwise to see the changes you'd need to refresh the page
+        this.posts.splice(this.posts.indexOf(post), 1);
+        return response.json();
+      })
+      .catch((error: Response) => Observable.throw(error.json));
   }
 }

@@ -43,7 +43,6 @@ router.use(function(req, res, next) {
   }
 });
 
-
 router.post('/', function (req, res, next) {
 
   var decoded = jwt.decode(req.headers['x-access-token']);
@@ -111,6 +110,36 @@ router.patch('/:id', function (req, res, next) {
           })
         });
     })
+
+})
+
+router.delete('/:id', function(req, res, next) {
+
+  var decoded = jwt.decode(req.headers['x-access-token']);
+
+  Post.findById(req.params.id)
+    .then( function(post){
+
+      //Check if the userId stored in the token is equal to the post one
+      if(decoded.user._id === post.userId){
+
+        //Remove post from db
+        Post.remove({'_id': req.params.id})
+          .then( function(){
+            res.status(200).json({
+              msg: 'Post correctly deleted'
+            })
+          })
+          .catch(function(err){
+            console.log('Post non trovato');
+            res.status(500).json({
+              msg: 'An error occured.',
+              error: err
+            })
+          });
+        }
+    })
+
 
 })
 

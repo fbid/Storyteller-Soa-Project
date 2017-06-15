@@ -20,7 +20,7 @@ h5 {
 }
 
 .story-details {
-  padding:3em;
+  padding:2.0em 2.5em;
 }
 
 .story-details > hr {
@@ -46,4 +46,16 @@ ul.tags > li {
 ul.tags > li > a.tag-link {
   text-transform:capitalize;
   letter-spacing: .05em;
+}
+
+span.ionicon {
+    font-size: 23px;
+    line-height: 0;
+    margin-right: 30px;
+    cursor:pointer;
+    float: right;
+}
+
+span.ionicon:hover {
+    color: #8D4DF4;
 }
