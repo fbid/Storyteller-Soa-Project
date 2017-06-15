@@ -27,9 +27,9 @@ export class InputFormComponent {
   onSubmit(){
     let form = this.addNewForm.value; //Extracting the values from FromGrup obj
     let newPost = new Post(
+      null, //user related info set to null.
+      null, //it will be added in backend code based on the token payload
       null,
-      localStorage.getItem('userId'),
-      localStorage.getItem('username'),
       form.title,
       form.mainImg,
       form.content,

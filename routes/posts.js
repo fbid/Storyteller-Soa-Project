@@ -4,6 +4,7 @@ var jwt = require('jsonwebtoken');
 
 var config = require('../config/index');
 var Post = require('../models/post');
+var User = require('../models/user');
 
 router.get('/', function (req, res, next) {
 
@@ -20,6 +21,7 @@ router.get('/', function (req, res, next) {
 
 });
 
+//Check token validity before proceeding down with other routes
 router.use(function(req, res, next) {
 
   var token = req.body.token || req.query.token || req.headers['x-access-token'];
@@ -41,13 +43,32 @@ router.use(function(req, res, next) {
   }
 });
 
+
 router.post('/', function (req, res, next) {
-  Post.create(req.body)
-    .then(function(post) {
-      return res.status(201).json({
-        msg: 'Post correctly stored.',
-        data: post
-      });
+
+  var decoded = jwt.decode(req.headers['x-access-token']);
+
+  User.findById(decoded.user._id)
+    .then( function(user){
+
+      //Replace user related info
+      req.body.userId = user._id;
+      req.body.author = user.username;
+      console.log('reqbody', req.body);
+      //Submit the story
+      Post.create(req.body)
+        .then(function(post) {
+          return res.status(201).json({
+            msg: 'Post correctly stored.',
+            data: post
+          });
+        })
+        .catch(function(err){
+          res.status(500).json({
+            msg: 'An error occured.',
+            error: err
+          })
+        });
     })
     .catch(function(err){
       res.status(500).json({
@@ -55,6 +76,7 @@ router.post('/', function (req, res, next) {
         error: err
       })
     });
+
 
 });
 
@@ -68,8 +90,14 @@ router.patch('/:id', function (req, res, next) {
       })
     })
     .then(function(post){
-      message.content = req.body.content;
-      message.save()
+
+      //Replace editable info
+      post.author = req.body.username;
+      post.mainImg = req.body.mainImg;
+      post.content = req.body.content;
+      post.tags = req.body.tags;
+
+      post.save()
         .then(function(post) {
           return res.status(200).json({
             msg: 'Post updated correctly.',
