@@ -19,10 +19,6 @@ h5 {
   transition:background-position-y 2s ease;
 }
 
-app-post:hover > .story-main-img-container > .main-img {
-  background-position-y: 55% !important;
-}
-
 .story-details {
   padding:3em;
 }

@@ -3,9 +3,13 @@ li {
   list-style-type: none;
   box-shadow: 4px 10px 19px rgba(0,0,0,.15);
   margin-top: 2.5em;
+  transition: box-shadow .5s ease;
 }
 
-li.columns:nth-of-type(2n-1) {
-    clear: both;
-    margin-left: 0;
+li:hover {
+  box-shadow: 1px 15px 32px rgba(0,0,0,.15)
+}
+
+/deep/ li:hover > app-post > .story-main-img-container > .main-img {
+  background-position-y: 55% !important;
 }
