@@ -46,7 +46,7 @@ li.navbar-item::after {
   float: left;
   margin-bottom: 0;
 }
-.navbar-link {
+/deep/ .navbar-link {
   font-size: 12px;
   font-weight: 600;
   letter-spacing: .2rem;
@@ -55,7 +55,7 @@ li.navbar-item::after {
   line-height: 6.5rem;
   color: #222;
 }
-.navbar-link.active {
+/deep/  .navbar-link.active {
   color: #8D4DF4;
 }
 .has-docked-nav .navbar {
