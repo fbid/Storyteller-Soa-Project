@@ -6,7 +6,7 @@ import { AuthService } from '../shared/services/auth.service';
 @Component({
   selector: 'app-logout',
   template: `
-    <a class="navbar-link" (click)='logout()'>
+    <a class="navbar-link logout" (click)='logout()'>
       Logout
     </a>
   `,

@@ -9,6 +9,11 @@
           Stories
         </a>
       </li>
+      <li class="navbar-item">
+        <a class="navbar-link" routerLink='stories/featured' routerLinkActive='active' >
+          Featured
+        </a>
+      </li>
       <li class="navbar-item" *ngIf='!isLoggedIn()'>
         <a class="navbar-link" routerLink='signin' routerLinkActive='active' >
           Sign In
