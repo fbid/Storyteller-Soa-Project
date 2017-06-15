@@ -17,7 +17,7 @@ export class PostService {
       .map((response: Response) => {
         const postArray = response.json();
         let processedPosts : Post[] = [];
-        console.log(postArray);
+
         for (let post of postArray) {
           processedPosts.push( new Post (
             post._id,
@@ -38,8 +38,10 @@ export class PostService {
   }
 
   addPost(post: Post) {
-    const headers = new Headers({'Content-Type': 'application/json'});
+    const token = localStorage.getItem('token');
+    const headers = new Headers({'Content-Type': 'application/json', 'x-access-token': token});
     const reqBody = JSON.stringify(post);
+
     return this.http.post('/stories', reqBody, {headers: headers})
       .map((response: Response) => response.json())
       .catch((error: Response) => Observable.throw(error.json));
@@ -49,7 +51,7 @@ export class PostService {
     const headers = new Headers({'Content-Type': 'application/json'});
     const reqBody = JSON.stringify(post);
 
-    return this.http.put('/stories/' + post.id, reqBody, {headers: headers})
+    return this.http.patch('/stories/' + post.id, reqBody, {headers: headers})
       .map((response: Response) => response.json())
       .catch((error: Response) => Observable.throw(error.json));
   }

@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
+var jwt = require('jsonwebtoken');
 
+var config = require('../config/index');
 var Post = require('../models/post');
 
 router.get('/', function (req, res, next) {
@@ -16,6 +18,27 @@ router.get('/', function (req, res, next) {
       })
     });
 
+});
+
+router.use(function(req, res, next) {
+
+  var token = req.body.token || req.query.token || req.headers['x-access-token'];
+
+  if (token) {
+    jwt.verify(token, config.secret, function(err, decoded) {
+      if (err) {
+        return res.status(401).json({ success: false, msg: 'Invalid token provided' });
+      }
+      req.decoded = decoded; //save the decoded token to request object for use in other routes
+      next();
+    });
+  }
+  else {
+    return res.status(403).send({
+        success: false,
+        message: 'No token provided.'
+    });
+  }
 });
 
 router.post('/', function (req, res, next) {
@@ -35,9 +58,9 @@ router.post('/', function (req, res, next) {
 
 });
 
-router.put('/:id', function (req, res, next) {
+router.patch('/:id', function (req, res, next) {
 
-  Post.findById(req.params.id)
+  Post.findOne(req.params.id)
     .catch(function(err){
       res.status(500).json({
         msg: 'An error occured.',

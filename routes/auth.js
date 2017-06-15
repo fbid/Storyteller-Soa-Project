@@ -3,10 +3,10 @@ var router = express.Router();
 var bcrypt = require('bcryptjs');
 var jwt = require('jsonwebtoken');
 
+var config = require('../config/index');
 var User = require('../models/user');
 
 router.post('/signup', function (req, res, next) {
-  console.log('Req body',req.body);
 
   var newUser = new User({
     username: req.body.username,
@@ -18,8 +18,6 @@ router.post('/signup', function (req, res, next) {
     password: bcrypt.hashSync(req.body.password, 16),
     email: req.body.email
   });
-
-  console.log(' New user: ' + newUser);
 
   User.create(newUser)
   .then(function(user) {
@@ -51,11 +49,13 @@ router.post('/signin', function (req, res, next) {
         })
       }
       //Signing a new token
-      var tkn = jwt.sign({ user: user}, 'SECRET_KEY_12345', {expiresIn: 7200})
+      var tkn = jwt.sign({ user: user}, config.secret, {expiresIn: 7200})
         res.status(200).json({
           msg: 'User logged in',
           token: tkn,
-          userId: user._id
+          userId: user._id,
+          username: user.username,
+          avatar: user.avatar_url
         })
     })
     .catch(function(err){
@@ -66,8 +66,5 @@ router.post('/signin', function (req, res, next) {
     })
 })
 
-// router.post('/logout', function (req, res, next) {
-//   
-// })
 
 module.exports = router;

@@ -28,6 +28,8 @@ export class SignInComponent {
       .subscribe(
         data => {
           localStorage.setItem('userId', data.userId);
+          localStorage.setItem('username', data.username);
+          localStorage.setItem('avatar', data.avatar);
           localStorage.setItem('token', data.token);
         },
         error => console.error(error)
