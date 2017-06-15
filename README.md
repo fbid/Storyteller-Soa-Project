@@ -1,6 +1,6 @@
 # Storyteller
 
-:musical_note: *A full stack web app built with Angular2, Express and MongoDB .*
+🖋 *A full stack web app built with Angular2, Express and MongoDB .*
 
 &nbsp;
 &nbsp;
