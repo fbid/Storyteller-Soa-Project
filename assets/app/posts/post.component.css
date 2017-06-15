@@ -16,11 +16,11 @@ h5 {
   width:100%;
   background-size:cover !important;
   background-position:center !important;
-  transition: width 1.4s ease;
+  transition:background-position-y 2s ease;
 }
 
-.main-img:hover {
-  width: 102%;
+app-post:hover > .story-main-img-container > .main-img {
+  background-position-y: 55% !important;
 }
 
 .story-details {
