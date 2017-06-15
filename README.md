@@ -6,18 +6,17 @@
 &nbsp;
 
 
-## Quickstart
+## Setup
 
-```
 Install the app dependencies
-$ npm install
+`$ npm install`
 
 Launch the build process
-$ npm run build
+`$ npm run build`
 
 Run the server
-$ npm start
-```
+`$ npm start`
+
 
 &nbsp;
 &nbsp;
