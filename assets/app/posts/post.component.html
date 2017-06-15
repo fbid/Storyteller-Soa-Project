@@ -5,5 +5,10 @@
   <h3>{{postData.title}}</h3>
   <h5 class="author-date">Posted by <a href="#">{{postData.author}}</a> on {{postData.date | date: 'dd/MM/yyyy'}}</h5>
   <p class="content">{{postData.content}}</p>
-  <h6 class="tags">{{postData.tags}}</h6>
+  <hr>
+  <ul class="tags">
+    <li *ngFor="let tag of postData.tags" class="tag">
+      <a href="#" class="tag-link">#{{tag}}</a>
+    </li>
+  </ul>
 </div>

@@ -7,15 +7,29 @@ h5 {
   color:#999;
 }
 
+.story-main-img-container {
+  overflow: hidden;
+}
+
 .main-img{
   min-height:270px;
   width:100%;
   background-size:cover !important;
   background-position:center !important;
+  transition: width 1.4s ease;
+}
+
+.main-img:hover {
+  width: 104%;
 }
 
 .story-details {
   padding:3em;
+}
+
+.story-details > hr {
+  margin-top:1em;
+  margin-bottom:1.5em;
 }
 
 p.content {
@@ -23,4 +37,17 @@ p.content {
   overflow:hidden;
 }
 
-.tags {}
+ul.tags {
+  list-style-type:none;
+  margin:0;
+}
+
+ul.tags > li {
+  display:inline;
+  margin-right:30px;
+}
+
+ul.tags > li > a.tag-link {
+  text-transform:capitalize;
+  letter-spacing: .05em;
+}

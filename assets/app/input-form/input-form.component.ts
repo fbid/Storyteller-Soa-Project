@@ -34,7 +34,7 @@ export class InputFormComponent {
       form.mainImg,
       form.content,
       new Date(),
-      form.tags
+      form.tags.replace(/\s/g,'').split(',')
     );
 
     this.postService.addPost(newPost)

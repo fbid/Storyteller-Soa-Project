@@ -7,7 +7,7 @@ export class Post {
     public mainImg: string,
     public content: string,
     public date: Date,
-    public tags: string
+    public tags: string[]
 
   ) {}
 }

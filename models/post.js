@@ -8,7 +8,7 @@ var postSchema = new Schema({
     mainImg: {type: String, required: true},
     content: {type: String, required: true},
     date: {type: Date, required: true},
-    tags: {type: String}
+    tags: {type: [String]}
 });
 
 module.exports = mongoose.model('Post', postSchema);
