@@ -28,8 +28,8 @@ export class InputFormComponent {
     let form = this.addNewForm.value; //Extracting the values from FromGrup obj
     let newPost = new Post(
       null,
-      'abc1234UserID',
-      'author',
+      localStorage.getItem('userId'),
+      localStorage.getItem('username'),
       form.title,
       form.mainImg,
       form.content,
