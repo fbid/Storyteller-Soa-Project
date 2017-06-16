@@ -24,8 +24,8 @@ router.get('/', function (req, res, next) {
 router.get('/:id', function (req, res, next) {
 
   Post.findById(req.params.id)
-    .then(function(post) {
-      return res.status(200).json(post);
+    .then(function(posts) {
+      return res.status(200).json(posts);
     })
     .catch(function(err){
       res.status(500).json({
@@ -36,27 +36,27 @@ router.get('/:id', function (req, res, next) {
 
 });
 
-//Check token validity before proceeding down with other routes
-// router.use('/', function(req, res, next) {
-//
-//
-//
-//   if (token) {
-//     jwt.verify(token, config.secret, function(err, decoded) {
-//       if (err) {
-//         return res.status(401).json({ success: false, msg: 'Invalid token provided' });
-//       }
-//       req.decoded = decoded; //save the decoded token to request object for use in other routes
-//       next();
-//     });
-//   }
-//   else {
-//     return res.status(403).send({
-//         success: false,
-//         message: 'No token provided.'
-//     });
-//   }
-// });
+//Verify the provided token before proceeding down with other routes
+router.use('/', function(req, res, next) {
+
+  var token = req.headers['x-access-token'] || req.body.token || req.query.token;
+
+  if (token) {
+    jwt.verify(token, config.secret, function(err, decoded) {
+      if (err) {
+        return res.status(401).json({ success: false, msg: 'Invalid token provided' });
+      }
+      req.decoded = decoded; //save the decoded token to request object for use in other routes
+      next();
+    });
+  }
+  else {
+    return res.status(403).send({
+        success: false,
+        message: 'No token provided.'
+    });
+  }
+});
 
 router.use('/', function (req, res, next) {
 

@@ -13,7 +13,7 @@ export class PostService {
   constructor( private http: Http) { }
 
   getPosts() {
-    return this.http.get('/stories')
+    return this.http.get('api/stories')
       .map((response: Response) => {
         const postArray = response.json();
         let processedPosts : Post[] = [];
@@ -38,7 +38,7 @@ export class PostService {
   }
 
   getPostById(id) {
-    return this.http.get('stories/'+id)
+    return this.http.get('api/stories/'+id)
       .map((response: Response) => response.json())
       .catch((error: Response) => Observable.throw(error.json));
   }
@@ -48,7 +48,7 @@ export class PostService {
     const headers = new Headers({'Content-Type': 'application/json', 'x-access-token': token});
     const reqBody = JSON.stringify(post);
 
-    return this.http.post('/stories', reqBody, {headers: headers})
+    return this.http.post('api/stories', reqBody, {headers: headers})
       .map((response: Response) => response.json())
       .catch((error: Response) => Observable.throw(error.json));
   }
@@ -58,7 +58,7 @@ export class PostService {
     const headers = new Headers({'Content-Type': 'application/json', 'x-access-token': token});
     const reqBody = JSON.stringify(post);
 
-    return this.http.patch('/stories/'+post.id, reqBody, {headers: headers})
+    return this.http.patch('api/stories/'+post.id, reqBody, {headers: headers})
       .map((response: Response) => response.json())
       .catch((error: Response) => Observable.throw(error.json));
   }
@@ -67,7 +67,7 @@ export class PostService {
     const token = localStorage.getItem('token');
     const headers = new Headers({'Content-Type': 'application/json', 'x-access-token': token});
 
-    return this.http.delete('/stories/'+post.id, {headers: headers})
+    return this.http.delete('api/stories/'+post.id, {headers: headers})
       .map((response: Response) => {
         //Remove the post from posts local array. Otherwise to see the changes you'd need to refresh the page
         this.posts.splice(this.posts.indexOf(post), 1);

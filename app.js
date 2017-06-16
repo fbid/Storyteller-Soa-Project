@@ -31,13 +31,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 //Helmet middleware for XSS protection, and more.
 app.use(helmet());
 
-app.use('/stories', postRoutes);
-app.use('/auth', authRoutes);
+app.use('/api/stories', postRoutes);
+app.use('/api/auth', authRoutes);
 app.use('/', appRoutes);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
-    return res.render('index');
+  console.log('Errore');
+  return res.render('index');
 });
 
 
