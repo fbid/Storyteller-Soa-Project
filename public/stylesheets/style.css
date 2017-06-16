@@ -1,4 +1,25 @@
-@import url('https://fonts.googleapis.com/css?family=Raleway:400,700|PT+Serif:400,700');
+@import url('https://fonts.googleapis.com/css?family=PT+Serif:400,700');
+
+/** Regular */
+@font-face {
+  font-family: "San Francisco";
+  font-weight: 400;
+  src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff");
+}
+
+/** Thin */
+@font-face {
+  font-family: "San Francisco";
+  font-weight: 200;
+  src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-thin-webfont.woff");
+}
+
+/** Bold */
+@font-face {
+  font-family: "San Francisco";
+  font-weight: 700;
+  src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-bold-webfont.woff");
+}
 
 .container {
   position: relative;
@@ -91,7 +112,7 @@ body {
   font-size: 1.5em; /* currently ems cause chrome bug misinterpreting rems on body element */
   line-height: 1.6;
   font-weight: 400;
-  font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #222;
   letter-spacing:.02em; }
 
@@ -144,7 +165,7 @@ input[type="button"] {
   color: #555;
   text-align: center;
   font-size: 11px;
-  font-family: 'Raleway', 'Helvetica',sans-serif;
+  font-family: 'Helvetica',sans-serif;
   line-height: 38px;
   letter-spacing: .1rem;
   text-transform: uppercase;
@@ -240,7 +261,7 @@ label,
 legend {
   display: block;
   margin-bottom: .5rem;
-  font-weight: 600; }
+  font-weight: 200; }
 fieldset {
   padding: 0;
   border-width: 0; }
@@ -362,4 +383,37 @@ h3 {
 
 li.navbar-item:last-of-type::after {
   content: '' !important;
+}
+
+
+body {
+    font-family: 'San Francisco', sans-serif !important;
+    font-weight:200;
+    color:#333;
+}
+
+button {
+    font-family: 'San Franscisco',sans-serif;
+    font-size: 11px;
+    font-weight: 200;
+}
+
+
+p.p_intro:first-letter {
+  font-family:'San Francisco', sans-serif !important;
+  font-weight:700;
+}
+
+.navbar-link {
+    font-size:15px;
+    letter-spacing:0;
+    font-weight: 400;
+}
+
+form .row {
+    margin-top: 15px;
+}
+
+h5.author-date {
+  letter-spacing:.02em
 }

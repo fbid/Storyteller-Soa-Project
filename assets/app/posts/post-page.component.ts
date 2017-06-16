@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
 import { Post } from '../shared/models/post.model';
@@ -15,7 +15,27 @@ export class PostPageComponent implements OnInit {
   private sub: any;
   private post: Post;
 
-  constructor(private postService: PostService, private route: ActivatedRoute){ }
+  constructor(
+    private postService: PostService,
+    private route: ActivatedRoute,
+    private router: Router
+  ){ }
+
+  onEdit(post) {
+    console.log(post);
+  }
+
+  onDelete(post) {
+    post.id = post._id; //Duplicated id as Post model don't have _id field
+    this.postService.deletePost(post)
+      .subscribe(
+        data => {
+          console.log(data);
+          this.router.navigate(['/stories']);
+        },
+        error => console.error(error)
+      );
+  }
 
   ngOnInit() {
       // Subscribe to route params

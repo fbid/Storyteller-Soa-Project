@@ -48,9 +48,7 @@ li.navbar-item::after {
   margin-bottom: 0;
 }
 /deep/ .navbar-link {
-  font-size: 12px;
-  font-weight: 400;
-  letter-spacing: .2rem;
+  font-weight: 200;
   margin-right: 35px;
   text-decoration: none;
   line-height: 6.5rem;

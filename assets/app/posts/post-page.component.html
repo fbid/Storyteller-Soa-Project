@@ -1,16 +1,30 @@
 <div *ngIf="post">
   <div class="full-w-bg" [ngStyle]="{background:'url(' + post?.mainImg +')'}"></div>
-  <div class="container">
     <div class="heading-text">
-      <h5>{{post.date | date : 'mediumDate'}}</h5>
+      <div class="row">
+        <div class="seven columns">
+          <h5>{{post.date | date : 'mediumDate'}}</h5>
+        </div>
+        <div class="five columns">
+          <ul class="story-editing">
+            <li><a (click)=onEdit(post)><span class="ionicon ion-ios-compose-outline"></span>Edit Story</a></li>
+            <li><a (click)=onDelete(post)><span class="ionicon ion-ios-trash-outline"></span>Delete Story</a></li>
+          </ul>
+        </div>
+      </div>
       <h2>{{post.title}}</h2>
       <span class="author">written by <a href="#">{{post.author}}</a></span>
     </div>
-    <p class="p_intro">{{post.content}}</p>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam dolorum nihil, repudiandae ipsa architecto tempora incidunt. Esse quaerat tempora laboriosam, officiis, error maxime, cupiditate atque possimus, quibusdam fugiat cum voluptates.
-      Facere a sequi quaerat rem voluptas repudiandae rerum iure, facilis soluta delectus numquam sunt, error recusandae dolores accusamus minus! Officiis aut sunt praesentium voluptatem ut doloremque deserunt totam ex animi?
-    </p>
-    <p>Fugit perferendis excepturi in accusantium, cupiditate eius ea dolores expedita laboriosam delectus, architecto, sint eaque, voluptate commodi totam! Fuga, facilis, excepturi. Aspernatur, distinctio veritatis, eius minus consectetur vero repellat ipsum.</p>
+
+  <div class="row story-content">
+    <div class="one columns offset">-</div>
+    <div class="nine columns">
+      <p class="p_intro six">{{post.content}}</p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam dolorum nihil, repudiandae ipsa architecto tempora incidunt. Esse quaerat tempora laboriosam, officiis, error maxime, cupiditate atque possimus, quibusdam fugiat cum voluptates.
+        Facere a sequi quaerat rem voluptas repudiandae rerum iure, facilis soluta delectus numquam sunt, error recusandae dolores accusamus minus! Officiis aut sunt praesentium voluptatem ut doloremque deserunt totam ex animi?
+      </p>
+      <p>Fugit perferendis excepturi in accusantium, cupiditate eius ea dolores expedita laboriosam delectus, architecto, sint eaque, voluptate commodi totam! Fuga, facilis, excepturi. Aspernatur, distinctio veritatis, eius minus consectetur vero repellat ipsum.</p>
+    </div>
   </div>
 </div>

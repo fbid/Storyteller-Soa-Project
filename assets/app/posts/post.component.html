@@ -1,19 +1,15 @@
-<div class="story-main-img-container" [routerLink]="['/stories', postData.id]">
-  <div class="main-img" [ngStyle]="{background:'url(' + postData.mainImg +')'}"></div>
+<div class="story-main-img-container" [routerLink]="['/stories', post.id]">
+  <div class="main-img" [ngStyle]="{background:'url(' + post.mainImg +')'}"></div>
 </div>
 <div class="story-details">
-  <h3 [routerLink]="['/stories', postData.id]">{{postData.title}}</h3>
-  <h5 class="author-date">Posted by <a href="#">{{postData.author}}</a> on {{postData.date | date: 'dd/MM/yyyy'}}</h5>
-  <p class="content">{{postData.content}}</p>
+  <h3 [routerLink]="['/stories', post.id]">{{post.title}}</h3>
+  <h5 class="author-date">Posted by <a href="#">{{post.author}}</a> on {{post.date | date: 'dd/MM/yyyy'}}</h5>
+  <p class="content">{{post.content}}</p>
   <div class="row">
     <ul class="tags nine columns">
-      <li *ngFor="let tag of postData.tags" class="tag">
+      <li *ngFor="let tag of post.tags" class="tag">
         <a href="#" class="tag-link">#{{tag}}</a>
       </li>
     </ul>
-    <div class="three columns">
-      <span class="ionicon ion-ios-trash-outline" (click)=onDelete(postData)></span>
-      <span class="ionicon ion-ios-compose-outline" (click)="onEdit(postData)"></span>
-    </div>
   </div>
 </div>

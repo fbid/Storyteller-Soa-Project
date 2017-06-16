@@ -8,7 +8,7 @@ import { PostService } from '../shared/services/post.service';
   selector: 'app-post-list',
   template: `<ul>
     <li *ngFor="let post of posts" class="twelve columns">
-      <app-post [postData]='post'></app-post></li>
+      <app-post [post]='post'></app-post></li>
   </ul>`,
   styleUrls: ['post-list.component.css']
 })
