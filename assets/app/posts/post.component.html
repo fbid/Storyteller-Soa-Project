@@ -2,7 +2,7 @@
   <div class="main-img" [ngStyle]="{background:'url(' + post.mainImg +')'}"></div>
 </div>
 <div class="story-details">
-  <h3 [routerLink]="['/stories', post.id]">{{post.title}}</h3>
+  <h3 class="post-title" [routerLink]="['/stories', post.id]">{{post.title}}</h3>
   <h5 class="author-date">Posted by <a href="#">{{post.author}}</a> on {{post.date | date: 'dd/MM/yyyy'}}</h5>
   <p class="content">{{post.content}}</p>
   <div class="row">

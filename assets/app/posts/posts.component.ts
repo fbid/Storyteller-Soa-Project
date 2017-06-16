@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
     <div class="row-spacer"></div>
     <div class="row">
       <button routerLink='my-feed' routerLinkActive='button-primary'>My Feed</button>
-      <button routerLink='add-new' routerLinkActive='button-primary'>Add New </button>
+      <button routerLink='add-new' routerLinkActive='button-primary'>New Story </button>
     </div>
     <div class="row">
       <router-outlet></router-outlet>

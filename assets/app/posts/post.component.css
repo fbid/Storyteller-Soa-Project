@@ -1,5 +1,11 @@
-h3 {
+h3.post-title {
   font-size:2.1em;
+  cursor:pointer;
+  transition: color .3s ease;
+}
+
+h3.post-title:hover {
+  color:#555;
 }
 
 h5 {
@@ -9,6 +15,7 @@ h5 {
 
 .story-main-img-container {
   overflow: hidden;
+  cursor:pointer;
 }
 
 .main-img{
