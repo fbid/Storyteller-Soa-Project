@@ -49,7 +49,7 @@ li.navbar-item::after {
 }
 /deep/ .navbar-link {
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: .2rem;
   margin-right: 35px;
   text-decoration: none;

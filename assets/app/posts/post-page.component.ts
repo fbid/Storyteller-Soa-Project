@@ -7,9 +7,10 @@ import { PostService } from '../shared/services/post.service';
 
 @Component({
   selector: 'post-page',
-  templateUrl: './post-page.component.html'
+  templateUrl: './post-page.component.html',
+  styleUrls: ['./post-page.component.css']
 })
-export class PostPageComponent implements OnInit{
+export class PostPageComponent implements OnInit {
 
   private sub: any;
   private post: Post;
@@ -22,7 +23,11 @@ export class PostPageComponent implements OnInit{
 
         let id = params['id'];
         this.postService.getPostById(id)
-          .subscribe(post => this.post = post);
+          .subscribe(post => {
+            this.post = post;
+            return this.post;
+          });
+
     });
   }
 
