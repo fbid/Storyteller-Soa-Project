@@ -14,6 +14,7 @@ import { SignUpComponent } from './auth/signup.component';
 import { LogoutComponent } from './auth/logout.component';
 import { routing } from './app.routing';
 import { AuthService } from './shared/services/auth.service';
+import { PostPageComponent } from './posts/post-page.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { AuthService } from './shared/services/auth.service';
     HeaderComponent,
     SignInComponent,
     SignUpComponent,
-    LogoutComponent
+    LogoutComponent,
+    PostPageComponent
   ],
   imports: [
     BrowserModule,

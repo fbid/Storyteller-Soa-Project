@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var helmet = require('helmet');
 
-var appRoutes = require('./routes/app');
+var appRoutes = require('./routes/index');
 var postRoutes = require('./routes/posts');
 var authRoutes = require('./routes/auth');
 

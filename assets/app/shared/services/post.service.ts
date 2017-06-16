@@ -37,6 +37,12 @@ export class PostService {
       .catch((error: Response) => Observable.throw(error.json));
   }
 
+  getPostById(id) {
+    return this.http.get('stories/'+id)
+      .map((response: Response) => response.json())
+      .catch((error: Response) => Observable.throw(error.json));
+  }
+
   addPost(post: Post) {
     const token = localStorage.getItem('token');
     const headers = new Headers({'Content-Type': 'application/json', 'x-access-token': token});
