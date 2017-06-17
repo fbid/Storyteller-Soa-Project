@@ -194,9 +194,11 @@ button.button-primary,
 input[type="submit"].button-primary,
 input[type="reset"].button-primary,
 input[type="button"].button-primary {
-  color: #FFF;
-  background-color: #8D4DF4;
-  border-color: #8D4DF4; }
+  color: #8D4DF4;
+  background-color: #fff;
+  background: transparent;
+  border-color: #8D4DF4;
+}
 .button.button-primary:hover,
 button.button-primary:hover,
 input[type="submit"].button-primary:hover,
@@ -207,9 +209,10 @@ button.button-primary:focus,
 input[type="submit"].button-primary:focus,
 input[type="reset"].button-primary:focus,
 input[type="button"].button-primary:focus {
-  color: #FFF;
-  background-color: #8D4DF4;
-  border-color: #8D4DF4; }
+  color: #7231da;
+  background-color: #fff;
+  background: transparent;
+  border-color: #7231da; }
 
 
 /* Forms
@@ -379,6 +382,7 @@ h3 {
     font-weight: 700;
     font-size: 3em;
     line-height: 160%;
+    margin-bottom:1em;
 }
 
 li.navbar-item:last-of-type::after {
