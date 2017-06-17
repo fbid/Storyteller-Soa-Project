@@ -33,6 +33,12 @@ export class PostPageComponent implements OnInit {
       );
   }
 
+  postedByCurrentUser(){
+    console.log(localStorage.getItem('userId')),
+    console.log(this.post.userId);
+    return localStorage.getItem('userId') === this.post.userId;
+  }
+
   ngOnInit() {
       // Subscribe to route params
       this.sub = this.route.params.subscribe(params => {
