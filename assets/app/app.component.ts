@@ -9,6 +9,7 @@ import { PostService } from './shared/services/post.service';
     <div class="container">
       <router-outlet></router-outlet>
     </div>
+    <app-error></app-error>
   `,
   styleUrls: ['./app.component.css'],
   providers: [PostService]

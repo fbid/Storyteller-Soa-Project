@@ -1,0 +1,12 @@
+<div class="global-modal" [ngClass]="{'global-modal-show':modalActive}">
+   <div class="overlay"></div>
+   <div class="global-modal_contents modal-transition">
+    <label class="close-btn" (click)="modalClose()"><i class="ion-ios-close-empty"></i></label>
+    <div class="global-modal-header">
+      <h3><span>Whoops!</span>It looks like this caused an error</h3>
+    </div>
+    <div class="global-modal-body">
+      <p>{{error?.message || error?.title}}</p>
+   </div>
+ </div>
+</div>

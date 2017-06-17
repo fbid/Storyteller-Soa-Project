@@ -1,0 +1,105 @@
+.overlay {
+  background: rgba(255, 255, 255, 0.77);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.global-modal {
+  display:block;
+  visibility:hidden;
+  opacity:0;
+  transition:opacity .4s ease-in-out;
+}
+
+.global-modal.global-modal-show {
+  visibility:visible;
+  opacity:1;
+}
+
+.global-modal_contents {
+  background: #FFF;
+  box-shadow: 0 0 9px 2px rgba(182, 182, 182, 0.2);
+  width: 50%;
+  position: absolute;
+  left: 42%;
+  margin-left: -16%;
+  top: 15%;
+  min-height: 450px;
+}
+.global-modal-header{
+  margin-top:3.5em;
+}
+.global-modal-header h3{
+  color: #333;
+  text-align: center;
+  font-weight: bold;
+  font-size: 22px;
+}
+.global-modal-header h3 > span{
+  display:block;
+}
+.close-btn {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width:50px;
+  height:50px;
+  margin: 0;
+  color:#000;
+  opacity:1;
+  font-weight:200;
+}
+.close-btn .ion-ios-close-empty{
+  font-size:3.5em;
+  transition:all .8s ease-in-out;
+  cursor:pointer;
+}
+.close-btn:hover{
+  opacity:0.6;
+}
+.global-modal-body{
+  width: 100%;
+}
+.global-modal-body p{
+  color: #34495E;
+  font-size: 16px;
+  line-height: 23px;
+  text-align: center;
+}
+.global-modal_close {
+  position: absolute;
+  right: 2rem;
+  top: 2rem;
+  text-decoration: none;
+  display: none;
+}
+
+@media (max-width: 1139px){
+  .global-modal p{
+    text-align: center;
+  }
+  .global-modal:after {
+    clear: both;
+    content: '';
+    display: table;
+  }
+}
+@media(max-width: 1027px){
+  .global-modal-header h3{
+    font-size: 18px;
+  }
+}
+@media (max-width : 767px) {
+  .global-modal_contents {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    margin: 0;
+  }
+  .global-modal-header h3{
+    font-size: 22px;
+  }
+}

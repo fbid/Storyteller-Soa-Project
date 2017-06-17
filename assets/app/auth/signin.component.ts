@@ -29,14 +29,12 @@ export class SignInComponent {
         data => {
           localStorage.setItem('userId', data.userId);
           localStorage.setItem('username', data.username);
-          localStorage.setItem('avatar', data.avatar);
           localStorage.setItem('token', data.token);
+          this.signInForm.reset();
+          this.router.navigateByUrl('/');
         },
         error => console.error(error)
       );
-
-    //this.signInForm.reset();
-    this.router.navigateByUrl('/');
 
   }
 

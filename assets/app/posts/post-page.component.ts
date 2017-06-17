@@ -26,7 +26,6 @@ export class PostPageComponent implements OnInit {
     this.postService.deletePost(post)
       .subscribe(
         data => {
-          console.log(data);
           this.router.navigate(['/stories']);
         },
         error => console.error(error)
@@ -34,8 +33,6 @@ export class PostPageComponent implements OnInit {
   }
 
   postedByCurrentUser(){
-    console.log(localStorage.getItem('userId')),
-    console.log(this.post.userId);
     return localStorage.getItem('userId') === this.post.userId;
   }
 

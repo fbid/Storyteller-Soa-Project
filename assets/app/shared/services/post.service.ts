@@ -4,13 +4,14 @@ import 'rxjs/Rx';
 import { Observable } from 'rxjs';
 
 import { Post } from '../models/post.model';
+import { ErrorService } from './error.service';
 
 @Injectable()
 export class PostService {
 
   private posts: Post[] = [];
 
-  constructor( private http: Http) { }
+  constructor( private http: Http, private errorService: ErrorService) { }
 
   getPosts() {
     return this.http.get('api/stories')
@@ -34,13 +35,19 @@ export class PostService {
         this.posts = processedPosts;
         return processedPosts;
       })
-      .catch((error: Response) => Observable.throw(error.json));
+      .catch((error: Response) => {
+        this.errorService.handleError(error.json());
+        return Observable.throw(error.json());
+      });
   }
 
   getPostById(id) {
     return this.http.get('api/stories/'+id)
       .map((response: Response) => response.json())
-      .catch((error: Response) => Observable.throw(error.json));
+      .catch((error: Response) => {
+        this.errorService.handleError(error.json());
+        return Observable.throw(error.json());
+      });
   }
 
   addPost(post: Post) {
@@ -50,7 +57,10 @@ export class PostService {
 
     return this.http.post('api/stories', reqBody, {headers: headers})
       .map((response: Response) => response.json())
-      .catch((error: Response) => Observable.throw(error.json));
+      .catch((error: Response) => {
+        this.errorService.handleError(error.json());
+        return Observable.throw(error.json());
+      });
   }
 
   editPost(post: Post) {
@@ -60,7 +70,10 @@ export class PostService {
 
     return this.http.patch('api/stories/'+post.id, reqBody, {headers: headers})
       .map((response: Response) => response.json())
-      .catch((error: Response) => Observable.throw(error.json));
+      .catch((error: Response) => {
+        this.errorService.handleError(error.json());
+        return Observable.throw(error.json());
+      });
   }
 
   deletePost(post: Post) {
@@ -73,6 +86,9 @@ export class PostService {
         this.posts.splice(this.posts.indexOf(post), 1);
         return response.json();
       })
-      .catch((error: Response) => Observable.throw(error.json));
+      .catch((error: Response) => {
+        this.errorService.handleError(error.json());
+        return Observable.throw(error.json());
+      });
   }
 }

@@ -16,6 +16,8 @@ import { routing } from './app.routing';
 import { AuthService } from './shared/services/auth.service';
 import { PostPageComponent } from './posts/post-page.component';
 import { EditFormComponent } from './forms/edit-form.component';
+import { ErrorComponent } from './errors/error.component';
+import { ErrorService } from './shared/services/error.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { EditFormComponent } from './forms/edit-form.component';
     SignUpComponent,
     LogoutComponent,
     PostPageComponent,
-    EditFormComponent
+    EditFormComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,7 @@ import { EditFormComponent } from './forms/edit-form.component';
     HttpModule,
     routing
   ],
-  providers: [AuthService],
+  providers: [AuthService, ErrorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

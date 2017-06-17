@@ -14,7 +14,7 @@ router.get('/', function (req, res, next) {
     })
     .catch(function(err){
       res.status(500).json({
-        msg: 'An error occured.',
+        title: 'Unable to get documents.',
         error: err
       })
     });
@@ -29,7 +29,7 @@ router.get('/:id', function (req, res, next) {
     })
     .catch(function(err){
       res.status(500).json({
-        msg: 'An error occured.',
+        title: 'Document not found',
         error: err
       })
     });
@@ -44,7 +44,7 @@ router.use('/', function(req, res, next) {
   if (token) {
     jwt.verify(token, config.secret, function(err, decoded) {
       if (err) {
-        return res.status(401).json({ success: false, msg: 'Invalid token provided' });
+        return res.status(401).json({ title: 'Invalid token provided', error: err  });
       }
       req.decoded = decoded; //save the decoded token to request object for use in other routes
       next();
@@ -52,8 +52,10 @@ router.use('/', function(req, res, next) {
   }
   else {
     return res.status(403).send({
-        success: false,
-        message: 'No token provided.'
+        title: 'No token provided',
+        error:{
+          message: 'Please signin before submitting a story'
+        }
     });
   }
 });
@@ -73,13 +75,13 @@ router.post('/', function (req, res, next) {
       Post.create(req.body)
         .then(function(post) {
           return res.status(201).json({
-            msg: 'Post correctly stored.',
+            title: 'Item correctly stored.',
             data: post
           });
         })
         .catch(function(err){
           res.status(500).json({
-            msg: 'An error occured.',
+            title: 'Unable to save the document',
             error: err
           })
         });
@@ -87,7 +89,7 @@ router.post('/', function (req, res, next) {
     .catch(function(err){
 
       res.status(500).json({
-        msg: 'An error occured.',
+        title: 'User not found',
         error: err
       })
     });
@@ -102,7 +104,7 @@ router.patch('/:id', function (req, res, next) {
   Post.findById(req.params.id)
     .catch(function(err){
       res.status(500).json({
-        msg: 'An error occured.',
+        title: 'Post ' + req.params.id + ' not found',
         error: err
       })
     })
@@ -119,20 +121,20 @@ router.patch('/:id', function (req, res, next) {
         post.save()
           .then(function(post) {
             return res.status(200).json({
-              msg: 'Post updated correctly.',
+              title: 'Post updated correctly.',
               data: post
             });
           })
           .catch(function(err){
             res.status(500).json({
-              msg: 'An error occured.',
+              title: 'Unable to update the document.',
               error: err
             })
           });
       }
       else {
         return res.status(401).json({
-          msg: 'You are not authorized to edit this post.',
+          title: 'You are not authorized to edit this post.',
           error: err
         })
       }
@@ -156,12 +158,12 @@ router.delete('/:id', function(req, res, next) {
         Post.remove({'_id': req.params.id})
           .then( function(){
             res.status(200).json({
-              msg: 'Post correctly deleted'
+              title: 'Post correctly deleted'
             })
           })
           .catch(function(err){
             res.status(500).json({
-              msg: 'An error occured.',
+              title: 'Unable to delete post with id: ' + req.params.id,
               error: err
             })
           });
