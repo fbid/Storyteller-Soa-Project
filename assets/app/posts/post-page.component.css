@@ -75,6 +75,7 @@ ul.story-editing > li > a {
    padding:4px;
    color:#333;
    cursor:pointer;
+   text-decoration:none;
 }
 
 ul.story-editing > li > a:hover {

@@ -21,10 +21,6 @@ export class PostPageComponent implements OnInit {
     private router: Router
   ){ }
 
-  onEdit(post) {
-    console.log(post);
-  }
-
   onDelete(post) {
     post.id = post._id; //Duplicated id as Post model don't have _id field
     this.postService.deletePost(post)

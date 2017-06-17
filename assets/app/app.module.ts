@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { InputFormComponent } from './input-form/input-form.component';
+import { InputFormComponent } from './forms/input-form.component';
 import { PostComponent } from './posts/post.component';
 import { PostListComponent } from './posts/post-list.component';
 import { PostsComponent } from './posts/posts.component';
@@ -15,6 +15,7 @@ import { LogoutComponent } from './auth/logout.component';
 import { routing } from './app.routing';
 import { AuthService } from './shared/services/auth.service';
 import { PostPageComponent } from './posts/post-page.component';
+import { EditFormComponent } from './forms/edit-form.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { PostPageComponent } from './posts/post-page.component';
     SignInComponent,
     SignUpComponent,
     LogoutComponent,
-    PostPageComponent
+    PostPageComponent,
+    EditFormComponent
   ],
   imports: [
     BrowserModule,

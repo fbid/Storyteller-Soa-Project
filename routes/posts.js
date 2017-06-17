@@ -58,19 +58,6 @@ router.use('/', function(req, res, next) {
   }
 });
 
-router.use('/', function (req, res, next) {
-
-    jwt.verify(req.headers['x-access-token'], config.secret, function (err, decoded) {
-        if (err) {
-            return res.status(401).json({
-                title: 'Not Authenticated',
-                error: err
-            });
-        }
-        next();
-    })
-});
-
 router.post('/', function (req, res, next) {
 
   var decoded = jwt.decode(req.headers['x-access-token']);
@@ -110,7 +97,9 @@ router.post('/', function (req, res, next) {
 
 router.patch('/:id', function (req, res, next) {
 
-  Post.findOne(req.params.id)
+  var decoded = jwt.decode(req.headers['x-access-token']);
+
+  Post.findById(req.params.id)
     .catch(function(err){
       res.status(500).json({
         msg: 'An error occured.',
@@ -119,26 +108,36 @@ router.patch('/:id', function (req, res, next) {
     })
     .then(function(post){
 
-      //Replace editable info
-      post.author = req.body.username;
-      post.mainImg = req.body.mainImg;
-      post.content = req.body.content;
-      post.tags = req.body.tags;
+      if(decoded.user._id === post.userId){
 
-      post.save()
-        .then(function(post) {
-          return res.status(200).json({
-            msg: 'Post updated correctly.',
-            data: post
-          });
+        return res.status(401).json({
+          msg: 'You are not authorized to edit this post.',
+          error: err
         })
-        .catch(function(err){
-          res.status(500).json({
-            msg: 'An error occured.',
-            error: err
+
+        //Replace editable info
+        post.title = req.body.title;
+        post.mainImg = req.body.mainImg;
+        post.content = req.body.content;
+        post.tags = req.body.tags;
+
+        post.save()
+          .then(function(post) {
+            return res.status(200).json({
+              msg: 'Post updated correctly.',
+              data: post
+            });
           })
-        });
-    })
+          .catch(function(err){
+            res.status(500).json({
+              msg: 'An error occured.',
+              error: err
+            })
+          });
+      }
+    });
+
+
 
 })
 

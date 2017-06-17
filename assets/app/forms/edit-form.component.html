@@ -1,0 +1,33 @@
+<div class="row-spacer"></div>
+<h3>Edit your story.</h3>
+<form [formGroup]='editForm' (ngSubmit)='onSubmit()'>
+  <div class="row">
+    <div class="nine columns">
+      <label for="title">Story title</label>
+      <input class="u-full-width" type="text" formControlName='title'>
+    </div>
+  </div>
+  <div class="row">
+    <div class="nine columns">
+      <label for="mainImg">Image URL</label>
+      <input class="u-full-width" type="text" formControlName='mainImg'>
+    </div>
+  </div>
+  <div class="row">
+    <div class="eight columns">
+      <label for="content">Content</label>
+      <textarea class="u-full-width" formControlName='content'></textarea>
+    </div>
+  </div>
+  <div class="row">
+    <div class="eight columns">
+      <label for="tags">Tags</label>
+      <input class="u-full-width" type="text" formControlName='tags'>
+    </div>
+  </div>
+  <div class="row">
+    <button type="submit" class="button-primary">
+      Submit
+    </button>
+  </div>
+</form>
