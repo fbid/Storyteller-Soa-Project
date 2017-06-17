@@ -110,11 +110,6 @@ router.patch('/:id', function (req, res, next) {
 
       if(decoded.user._id === post.userId){
 
-        return res.status(401).json({
-          msg: 'You are not authorized to edit this post.',
-          error: err
-        })
-
         //Replace editable info
         post.title = req.body.title;
         post.mainImg = req.body.mainImg;
@@ -134,6 +129,12 @@ router.patch('/:id', function (req, res, next) {
               error: err
             })
           });
+      }
+      else {
+        return res.status(401).json({
+          msg: 'You are not authorized to edit this post.',
+          error: err
+        })
       }
     });
 
