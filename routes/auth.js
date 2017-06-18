@@ -44,15 +44,15 @@ router.post('/signin', function (req, res, next) {
         //Error: The hashed+salted password do not match
         //I'm returning the same status so I don't give any hint to malicious users
         return res.status(500).json({
-          title: 'Invalid email or password.',
+          title: 'Invalid login credentials',
           error: err
         })
       }
       //Signing a new token
-      var tkn = jwt.sign({ user: user}, config.secret, {expiresIn: 7200})
+      var token = jwt.sign({ user: user}, config.secret, {expiresIn: 7200})
         res.status(200).json({
           title: 'User logged in',
-          token: tkn,
+          token: token,
           userId: user._id,
           username: user.username,
           avatar: user.avatar_url
@@ -60,11 +60,10 @@ router.post('/signin', function (req, res, next) {
     })
     .catch(function(err){
       res.status(500).json({
-        title: 'Invalid email or password.',
+        title: 'Invalid login credentials.',
         error: err
       })
     })
 })
-
 
 module.exports = router;
