@@ -16,7 +16,8 @@ router.post('/signup', function (req, res, next) {
     city: req.body.city,
     country: req.body.country,
     password: bcrypt.hashSync(req.body.password, 16),
-    email: req.body.email
+    email: req.body.email,
+    favouritePosts: req.body.favouritePosts
   });
 
   User.create(newUser)

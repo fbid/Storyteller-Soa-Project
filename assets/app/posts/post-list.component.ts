@@ -6,10 +6,7 @@ import { PostService } from '../shared/services/post.service';
 
 @Component ({
   selector: 'app-post-list',
-  template: `<ul>
-    <li *ngFor="let post of posts" class="twelve columns">
-      <app-post [post]='post'></app-post></li>
-  </ul>`,
+  templateUrl: './post-list.component.html',
   styleUrls: ['post-list.component.css']
 })
 export class PostListComponent implements OnInit{

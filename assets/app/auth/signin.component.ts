@@ -3,8 +3,6 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { AuthService } from '../shared/services/auth.service';
-//import { User } from '../shared/models/user.model';
-
 
 @Component({
   selector:'app-signin',
@@ -22,11 +20,11 @@ export class SignInComponent {
   }
 
   onSubmit(){
-    console.log(this.signInForm);
     const form = this.signInForm.value;
     this.authService.signInUser({ email: form.email, password: form.password })
       .subscribe(
         data => {
+          console.log(data);
           localStorage.setItem('userId', data.userId);
           localStorage.setItem('username', data.username);
           localStorage.setItem('token', data.token);

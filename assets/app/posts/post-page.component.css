@@ -10,12 +10,10 @@
   margin-right: -3000px;
 }
 
-
 .container-2 {
   max-width:960px;
   margin:0 auto;
 }
-
 
 p.p_intro:first-letter {
   font-family:'Raleway', sans-serif;
@@ -89,6 +87,39 @@ ul.story-editing > li > a:hover {
 
 .story-content {
   margin-top:40px;
+}
+
+span.long-bar {
+    width: 25px;
+    border-top: 1px solid #ccc;
+    height: 4px;
+    display: inline-block;
+    margin: 0 6px;
+}
+
+ul.story-editing.subtitle-menu {
+    float: left;
+}
+
+ul.story-editing.subtitle-menu > li {
+    border:1px solid #ccc;
+    padding:.5em .8em;
+    border-radius:5px;
+    margin-left:0;
+    margin-right:0;
+
+}
+
+ul.story-editing.subtitle-menu > li > a {
+   border:0 !important;
+}
+
+ul.story-editing.subtitle-menu > li.fav:hover{
+   border-color:#eb52b2;
+}
+
+ul.story-editing.subtitle-menu > li.fav > a:hover{
+   color:#eb52b2;
 }
 
 /* Icons */

@@ -26,7 +26,7 @@ export class SignUpComponent {
   }
 
   onSubmit(){
-    console.log(this.signUpForm.value);
+
     const form = this.signUpForm.value;
 
     //Random mockup avatar construction
@@ -34,7 +34,17 @@ export class SignUpComponent {
     const rnd_num = Math.round(Math.random() * 100);
     const avatar = 'https://randomuser.me/api/portraits/'+ mf + '/' + rnd_num +'.jpg';
 
-    const user = new User( form.username, form.firstName, form.lastName, form.city, form.country, form.password, form.email, avatar);
+    const user = new User(
+      form.username,
+      form.firstName,
+      form.lastName,
+      form.city,
+      form.country,
+      form.password,
+      form.email,
+      avatar,
+      []
+    );
 
     this.authService.signUpUser(user)
       .subscribe(

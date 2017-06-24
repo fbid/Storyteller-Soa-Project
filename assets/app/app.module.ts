@@ -8,6 +8,7 @@ import { InputFormComponent } from './forms/input-form.component';
 import { PostComponent } from './posts/post.component';
 import { PostListComponent } from './posts/post-list.component';
 import { PostsComponent } from './posts/posts.component';
+import { FavouritePosts } from './posts/favourite-posts.component';
 import { HeaderComponent } from './shared/layout/header.component';
 import { SignInComponent } from './auth/signin.component';
 import { SignUpComponent } from './auth/signup.component';
@@ -26,6 +27,7 @@ import { ErrorService } from './shared/services/error.service';
     PostComponent,
     PostListComponent,
     PostsComponent,
+    FavouritePosts,
     HeaderComponent,
     SignInComponent,
     SignUpComponent,

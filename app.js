@@ -10,6 +10,7 @@ var helmet = require('helmet');
 var appRoutes = require('./routes/index');
 var postRoutes = require('./routes/posts');
 var authRoutes = require('./routes/auth');
+var userRoutes = require('./routes/user');
 
 var app = express();
 
@@ -32,6 +33,7 @@ app.use(helmet());
 
 app.use('/api/stories', postRoutes);
 app.use('/api/auth', authRoutes);
+app.use('/api/user', userRoutes);
 app.use('/', appRoutes);
 
 // catch 404 and forward to error handler

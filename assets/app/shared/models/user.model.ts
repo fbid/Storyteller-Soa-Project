@@ -7,6 +7,7 @@ export class User {
     public country: string,
     public password: string,
     public email: string,
-    public avatar_url?: string
+    public avatar_url: string,
+    public favouritePosts: string[]
   ) {}
 }

@@ -9,7 +9,7 @@ import { AuthService } from '../services/auth.service';
 })
 export class HeaderComponent {
 
-  constructor( private authService: AuthService){ }
+  constructor( private authService: AuthService ){ }
 
   isLoggedIn() {
     return this.authService.isLoggedIn();

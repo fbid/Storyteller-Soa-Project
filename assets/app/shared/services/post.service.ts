@@ -16,24 +16,7 @@ export class PostService {
   getPosts() {
     return this.http.get('api/stories')
       .map((response: Response) => {
-        const postArray = response.json();
-        let processedPosts : Post[] = [];
-
-        for (let post of postArray) {
-          processedPosts.push( new Post (
-            post._id,
-            post.userId,
-            post.author,
-            post.title,
-            post.mainImg,
-            post.content,
-            post.date,
-            post.tags
-          ));
-        }
-
-        this.posts = processedPosts;
-        return processedPosts;
+        return response.json();
       })
       .catch((error: Response) => {
         this.errorService.handleError(error.json());
@@ -84,6 +67,37 @@ export class PostService {
       .map((response: Response) => {
         //Remove the post from posts local array. Otherwise to see the changes you'd need to refresh the page
         this.posts.splice(this.posts.indexOf(post), 1);
+        return response.json();
+      })
+      .catch((error: Response) => {
+        this.errorService.handleError(error.json());
+        return Observable.throw(error.json());
+      });
+  }
+
+  addPostToUserFavourites(postId: string, userId:string) {
+
+    const token = localStorage.getItem('token');
+    const headers = new Headers({'Content-Type': 'application/json', 'x-access-token': token});
+    const reqBody = JSON.stringify({id: postId});
+
+    return this.http.patch('api/user/'+ userId + '/favourites', reqBody, {headers: headers})
+      .map((response: Response) => {
+        return response.json();
+      })
+      .catch((error: Response) => {
+        this.errorService.handleError(error.json());
+        return Observable.throw(error.json());
+      });
+
+  }
+
+  getFavouritePosts(userId: string){
+    const token = localStorage.getItem('token');
+    const headers = new Headers({'Content-Type': 'application/json', 'x-access-token': token});
+
+    return this.http.get('api/user/'+ userId + '/favourites', {headers: headers})
+      .map((response: Response) => {
         return response.json();
       })
       .catch((error: Response) => {

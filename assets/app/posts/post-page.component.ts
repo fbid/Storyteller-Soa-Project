@@ -36,6 +36,23 @@ export class PostPageComponent implements OnInit {
     return localStorage.getItem('userId') === this.post.userId;
   }
 
+  addToFavourites(postId){
+
+    console.log('Adding post with id:' + postId + ' to favs');
+    const currentUser = localStorage.getItem('userId');
+
+    this.postService.addPostToUserFavourites(postId, currentUser)
+      .subscribe(
+        data => console.log('Post added to fav!', data),
+        error => console.error(error)
+      );
+  }
+
+  sharePost(post){
+    console.log('Sharing post...');
+    console.log(post);
+  }
+
   ngOnInit() {
       // Subscribe to route params
       this.sub = this.route.params.subscribe(params => {
