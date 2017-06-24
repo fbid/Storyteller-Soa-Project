@@ -11,7 +11,7 @@ export class PostService {
 
   private posts: Post[] = [];
 
-  constructor( private http: Http, private errorService: ErrorService) { }
+  constructor( private http: Http, private errorService: ErrorService ) { }
 
   getPosts() {
     return this.http.get('api/stories')
@@ -65,8 +65,7 @@ export class PostService {
 
     return this.http.delete('api/stories/'+post.id, {headers: headers})
       .map((response: Response) => {
-        //Remove the post from posts local array. Otherwise to see the changes you'd need to refresh the page
-        this.posts.splice(this.posts.indexOf(post), 1);
+        this.posts.splice(this.posts.indexOf(post), 1); //Remove the post from posts local array.
         return response.json();
       })
       .catch((error: Response) => {
@@ -76,7 +75,6 @@ export class PostService {
   }
 
   addPostToUserFavourites(postId: string, userId:string) {
-
     const token = localStorage.getItem('token');
     const headers = new Headers({'Content-Type': 'application/json', 'x-access-token': token});
     const reqBody = JSON.stringify({id: postId});
@@ -89,7 +87,6 @@ export class PostService {
         this.errorService.handleError(error.json());
         return Observable.throw(error.json());
       });
-
   }
 
   getFavouritePosts(userId: string){
