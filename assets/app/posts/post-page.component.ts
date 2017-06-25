@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 
 import { Post } from '../shared/models/post.model';
 import { PostService } from '../shared/services/post.service';
+import { AuthService } from '../shared/services/auth.service';
 
 @Component({
   selector: 'post-page',
@@ -14,9 +15,11 @@ export class PostPageComponent implements OnInit {
 
   private sub: any;
   private post: Post;
+  public isInUserFavourites: boolean = false;
 
   constructor(
     private postService: PostService,
+    private authService: AuthService,
     private route: ActivatedRoute,
     private router: Router
   ){ }
@@ -37,8 +40,7 @@ export class PostPageComponent implements OnInit {
   }
 
   addToFavourites(postId){
-
-    console.log('Adding post with id:' + postId + ' to favs');
+    this.isInUserFavourites = true;
     const currentUser = localStorage.getItem('userId');
 
     this.postService.addPostToUserFavourites(postId, currentUser)
@@ -50,21 +52,38 @@ export class PostPageComponent implements OnInit {
 
   sharePost(post){
     console.log('Sharing post...');
-    console.log(post);
+  }
+
+  removeFromFavourites(postId){
+    this.isInUserFavourites = false;
+    this.postService.removePostFromFavourites(postId, localStorage.getItem('userId'))
+      .subscribe(
+        data => console.log(data),
+        error => console.error(error)
+      );
   }
 
   ngOnInit() {
       // Subscribe to route params
       this.sub = this.route.params.subscribe(params => {
 
-        let id = params['id'];
-        this.postService.getPostById(id)
+        let postId = params['id'];
+
+        this.postService.getPostById(postId)
           .subscribe(post => {
             this.post = post;
             return this.post;
           });
 
-    });
+        this.authService.getUserData(localStorage.getItem('userId'))
+          .subscribe(
+            user => {
+              if(user.favouritePosts.indexOf(postId) !== -1){
+                this.isInUserFavourites = true;
+              }
+            });
+
+      });
   }
 
   ngOnDestroy() {

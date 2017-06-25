@@ -9,7 +9,10 @@ import { ErrorService } from './error.service';
 @Injectable()
 export class AuthService {
 
-  constructor( private http: Http, private errorService: ErrorService ) { }
+  constructor(
+    private http: Http,
+    private errorService: ErrorService
+  ) { }
 
   signInUser(user) {
     let body = JSON.stringify(user);
@@ -33,6 +36,17 @@ export class AuthService {
       });
     }
 
+    getUserData(userId:string) {
+      const token = localStorage.getItem('token');
+      const headers = new Headers({'Content-Type': 'application/json', 'x-access-token': token});
+      return this.http.get('api/user/'+userId, {headers: headers})
+        .map((response: Response) => response.json())
+        .catch((error: Response) => {
+          this.errorService.handleError(error.json());
+          return Observable.throw(error.json());
+        });
+    }
+
     userLogout() {
       localStorage.clear();
     }
@@ -40,4 +54,6 @@ export class AuthService {
     isLoggedIn(){
       return localStorage.getItem('token') !== null;
     }
+
+
 }

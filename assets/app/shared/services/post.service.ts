@@ -102,4 +102,18 @@ export class PostService {
         return Observable.throw(error.json());
       });
   }
+
+  removePostFromFavourites(postId:string, userId:string){
+    const token = localStorage.getItem('token');
+    const headers = new Headers({'Content-Type': 'application/json', 'x-access-token': token});
+
+    return this.http.delete('api/user/'+userId+'/favourites/'+postId, {headers: headers})
+      .map((response: Response) => {
+        return response.json();
+      })
+      .catch((error: Response) => {
+        this.errorService.handleError(error.json());
+        return Observable.throw(error.json());
+      });
+  }
 }

@@ -18,7 +18,12 @@
       </div>
       <h2>{{post.title}}</h2>
       <ul class="story-editing subtitle-menu">
-        <li class="fav">
+        <li class="fav" *ngIf='isInUserFavourites'>
+          <a (click)="removeFromFavourites(post._id)">
+            <span class="ionicon ion-ios-heart-outline"></span>Remove
+          </a>
+        </li>
+        <li class="fav" *ngIf='!isInUserFavourites'>
           <a (click)="addToFavourites(post._id)">
             <span class="ionicon ion-ios-heart-outline"></span>Favourite
           </a>
