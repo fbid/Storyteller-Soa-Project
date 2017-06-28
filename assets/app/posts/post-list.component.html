@@ -1,4 +1,7 @@
 <ul>
   <li *ngFor="let post of posts" class="twelve columns">
-    <app-post [post]='post'></app-post></li>
+    <app-post [post]='post'></app-post>
+  </li>
+  <div class="row-spacer"></div>
+  <h3 *ngIf="posts?.length == 0"> Sorry, there isn't any story to display. </h3>
 </ul>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { PostComponent } from './post.component'
 import { Post } from '../shared/models/post.model';
@@ -13,10 +14,15 @@ export class FavouritePosts implements OnInit{
 
   private posts: Post[];
 
-  constructor(private postService: PostService ){ }
+  constructor(private postService: PostService, private router: Router ){ }
 
   ngOnInit() {
     const currentUser = localStorage.getItem('userId');
+
+    if(!currentUser){
+      this.router.navigateByUrl('/'); //Redirect to homepage if not logged in
+    }
+
     this.postService.getFavouritePosts(currentUser)
       .subscribe(
         postArray => {
