@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { AuthService } from '../shared/services/auth.service';
 import { User } from '../shared/models/user.model';
@@ -12,7 +13,7 @@ export class SignUpComponent {
 
   private signUpForm: FormGroup;
 
-  constructor( fb:FormBuilder , private authService: AuthService ){
+  constructor( fb:FormBuilder , private authService: AuthService, private router: Router ){
     this.signUpForm = fb.group({
       'username': [null, Validators.required],
       'firstName': [null, Validators.required],
@@ -48,7 +49,10 @@ export class SignUpComponent {
 
     this.authService.signUpUser(user)
       .subscribe(
-        data => console.log(data),
+        data => {
+          console.log(data)
+          this.router.navigateByUrl('/');
+        },
         error => console.error(error)
       );
 
